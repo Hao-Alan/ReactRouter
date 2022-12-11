@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const LayoutDemo = ({ children }) => {
   return (
     <div>
-      <nav className="navbar navbar-expand-md navbar-light bg-light">
+      <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             Home
@@ -31,6 +31,32 @@ const LayoutDemo = ({ children }) => {
               <Link className="nav-link" to="/dashboard">
                 Dashboard
               </Link>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  HomeTask
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <Link className="dropdown-item" to="/todoList">
+                      Todo List
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to={"/contact"}>
+                      Another action
+                    </Link>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                </ul>
+              </li>
             </div>
           </div>
         </div>

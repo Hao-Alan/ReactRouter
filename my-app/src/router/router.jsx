@@ -17,6 +17,7 @@ import DashError from "../pages/DashError";
 import statsLoader from "../loaders/statsLoader";
 import Postxxx from "../pages/Postxxx";
 import postLoader from "../loaders/postLoader";
+import TodoList from "../TodoList/TodoList";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,15 @@ export const router = createBrowserRouter([
     element: (
       <LayoutDemo>
         <Contact />
+      </LayoutDemo>
+    ),
+  },
+  {
+    path: "/todoList",
+    id: "todoList",
+    element: (
+      <LayoutDemo>
+        <TodoList />
       </LayoutDemo>
     ),
   },
