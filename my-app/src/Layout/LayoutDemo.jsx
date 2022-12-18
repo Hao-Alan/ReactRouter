@@ -48,12 +48,14 @@ const LayoutDemo = ({ children }) => {
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to={"/contact"}>
-                      Another action
+                    <Link className="dropdown-item" to={"/todoListAgain"}>
+                      Todo List Again
                     </Link>
                   </li>
                   <li>
-                    <hr className="dropdown-divider" />
+                    <Link className="dropdown-item" to={"/contact"}>
+                      Todo List Redux
+                    </Link>
                   </li>
                 </ul>
               </li>

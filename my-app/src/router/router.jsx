@@ -18,6 +18,7 @@ import statsLoader from "../loaders/statsLoader";
 import Postxxx from "../pages/Postxxx";
 import postLoader from "../loaders/postLoader";
 import TodoList from "../TodoList/TodoList";
+import TodoListAgain from "../pages/TodoListAgain";
 
 export const router = createBrowserRouter([
   {
@@ -45,15 +46,6 @@ export const router = createBrowserRouter([
     element: (
       <LayoutDemo>
         <Contact />
-      </LayoutDemo>
-    ),
-  },
-  {
-    path: "/todoList",
-    id: "todoList",
-    element: (
-      <LayoutDemo>
-        <TodoList />
       </LayoutDemo>
     ),
   },
@@ -92,5 +84,23 @@ export const router = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: "/todoListagain",
+    id: "todoListAgain",
+    element: (
+      <LayoutDemo>
+        <TodoListAgain />
+      </LayoutDemo>
+    ),
+  },
+  {
+    path: "/todoList",
+    id: "todoList",
+    element: (
+      <LayoutDemo>
+        <TodoList />
+      </LayoutDemo>
+    ),
   },
 ]);
