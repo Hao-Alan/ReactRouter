@@ -53,7 +53,7 @@ const LayoutDemo = ({ children }) => {
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to={"/contact"}>
+                    <Link className="dropdown-item" to={"/todolistredux"}>
                       Todo List Redux
                     </Link>
                   </li>

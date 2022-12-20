@@ -19,6 +19,7 @@ import Postxxx from "../pages/Postxxx";
 import postLoader from "../loaders/postLoader";
 import TodoList from "../TodoList/TodoList";
 import TodoListAgain from "../pages/TodoListAgain";
+import TodoListRedux from "../pages/TodoListRedux";
 
 export const router = createBrowserRouter([
   {
@@ -100,6 +101,15 @@ export const router = createBrowserRouter([
     element: (
       <LayoutDemo>
         <TodoList />
+      </LayoutDemo>
+    ),
+  },
+  {
+    path: "/todolistredux",
+    id: "todoListRedux",
+    element: (
+      <LayoutDemo>
+        <TodoListRedux />
       </LayoutDemo>
     ),
   },
