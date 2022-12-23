@@ -1,6 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  changeStatusTaskAgain,
+  deleteTask,
+  fetchData,
+} from "../features/counter/counterSlice";
 
 const RenderDoneX = ({ todo }) => {
+  const dispatch = useDispatch();
   return (
     <li
       className="task d-flex justify-content-between"
@@ -17,18 +24,22 @@ const RenderDoneX = ({ todo }) => {
         <button
           className="btn btn-danger me-2"
           type="button"
-          // onClick={() => {
-          //   deleteTask(item.taskName);
-          // }}
+          onClick={() => {
+            dispatch(deleteTask(todo.taskName)).then(() => {
+              dispatch(fetchData());
+            });
+          }}
         >
           <i class="fa fa-trash-alt"></i>
         </button>
         <button
           className="btn btn-success "
           type="button"
-          // onClick={() => {
-          //   changeStatusTaskAgain(item.taskName);
-          // }}
+          onClick={() => {
+            dispatch(changeStatusTaskAgain(todo.taskName)).then(() => {
+              dispatch(fetchData());
+            });
+          }}
         >
           <i class="fa fa-redo"></i>
         </button>

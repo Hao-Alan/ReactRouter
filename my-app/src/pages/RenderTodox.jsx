@@ -1,6 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteTask, fetchData } from "../features/counter/counterSlice";
+import {
+  changeStatusTask,
+  deleteTask,
+  fetchData,
+} from "../features/counter/counterSlice";
 
 const RenderTodox = ({ item }) => {
   const dispatch = useDispatch();
@@ -30,9 +34,11 @@ const RenderTodox = ({ item }) => {
         <button
           className="btn btn-warning "
           type="button"
-          // onClick={() => {
-          //   changeStatusTask(item.taskName);
-          // }}
+          onClick={() => {
+            dispatch(changeStatusTask(item.taskName)).then(() => {
+              dispatch(fetchData());
+            });
+          }}
         >
           <i class="fa fa-check-circle"></i>
         </button>

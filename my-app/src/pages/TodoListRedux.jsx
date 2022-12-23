@@ -1,6 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { fetchData, selectTodo } from "../features/counter/counterSlice";
+import {
+  fetchData,
+  postDatax,
+  selectTodo,
+} from "../features/counter/counterSlice";
 import { useDispatch, useSelector } from "react-redux";
 import RenderTodox from "./RenderTodox";
 import RenderDoneX from "./RenderDoneX";
@@ -52,63 +56,65 @@ const TodoListRedux = () => {
     setState({ ...state, tasks: newTasks, errors: newError });
   };
 
-  const postData = async () => {
-    try {
-      const resolve = await axios.post(
-        "https://svcy.myclass.vn/api/ToDoList/AddTask",
-        state.tasks
-      );
-      console.log(resolve);
-      fetchData();
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  };
+  // const postData = async () => {
+  //   try {
+  //     const resolve = await axios.post(
+  //       "https://svcy.myclass.vn/api/ToDoList/AddTask",
+  //       state.tasks
+  //     );
+  //     console.log(resolve);
+  //     fetchData();
+  //   } catch (error) {
+  //     console.log(error.response.data);
+  //   }
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // postData();
-    dispatch(postData(state.tasks));
-    let taskNews = { taskName: "" };
+    let taskNews = { ...state.tasks };
+    dispatch(postDatax(taskNews)).then(() => {
+      dispatch(fetchData());
+    });
 
-    setState({ ...state, tasks: taskNews });
+    // setState({ ...state, tasks: taskNews });
     // fetchData();
   };
 
-  const deleteTask = async (item) => {
-    // console.log(item);
-    try {
-      const resolve = await axios.delete(`
-      https://svcy.myclass.vn/api/ToDoList/deleteTask?taskName=${item}`);
-      console.log(resolve);
-      fetchData();
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  };
+  // const deleteTask = async (item) => {
+  //   // console.log(item);
+  //   try {
+  //     const resolve = await axios.delete(`
+  //     https://svcy.myclass.vn/api/ToDoList/deleteTask?taskName=${item}`);
+  //     console.log(resolve);
+  //     fetchData();
+  //   } catch (error) {
+  //     console.log(error.response.data);
+  //   }
+  // };
 
-  const changeStatusTask = async (item) => {
-    try {
-      const result = await axios.put(
-        `https://svcy.myclass.vn/api/ToDoList/doneTask?taskName=${item}`
-      );
-      fetchData();
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  };
+  // const changeStatusTask = async (item) => {
+  //   try {
+  //     const result = await axios.put(
+  //       `https://svcy.myclass.vn/api/ToDoList/doneTask?taskName=${item}`
+  //     );
+  //     fetchData();
+  //   } catch (error) {
+  //     console.log(error.response.data);
+  //   }
+  // };
 
-  const changeStatusTaskAgain = async (item) => {
-    try {
-      const result = await axios.put(
-        `https://svcy.myclass.vn/api/ToDoList/rejectTask?taskName=${item}`
-      );
-      fetchData();
-    } catch (error) {
-      console.log(error.response.data);
-    }
-  };
+  // const changeStatusTaskAgain = async (item) => {
+  //   try {
+  //     const result = await axios.put(
+  //       `https://svcy.myclass.vn/api/ToDoList/rejectTask?taskName=${item}`
+  //     );
+  //     fetchData();
+  //   } catch (error) {
+  //     console.log(error.response.data);
+  //   }
+  // };
   return (
     <div>
       <form onSubmit={handleSubmit}>

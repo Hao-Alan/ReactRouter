@@ -31,37 +31,45 @@ export const fetchData = createAsyncThunk(`${sliceName}/fetchData`,
 
 
 export const deleteTask = createAsyncThunk(`${sliceName}/deleteTask`, async (taskName) => {
-  console.log("hellloo", taskName);
   try {
     const resolve = await axios.delete(`${DELETE_URL}${taskName}`)
     console.log('resolve', resolve);
-    // fetchData()
   } catch (error) {
     return error.response.data
   }
 })
 
 
-// export const postData = createAsyncThunk(`${sliceName}/postData`, async () => {
-//   try {
-//     const response = await axios.post(POST_URL)
-//     return response.data
-//   } catch (error) {
-//     return error.response.data
-//   }
-// })
+export const postDatax = createAsyncThunk(`${sliceName}/postData`, async (taskName) => {
+  try {
+    const response = await axios.post(POST_URL, taskName)
+    return response.data
+  } catch (error) {
+    return error.response.data
+  }
+})
 
 
 
-// export const changeStatusTask = createAsyncThunk(`${sliceName}/postData`, async () => {
-//   try {
-//     const response = await axios.post(POST_URL)
+export const changeStatusTaskAgain = createAsyncThunk(`${sliceName}/changeStatusTaskAgain`, async (taskName) => {
+  try {
+    const response = await axios.put(`${PUTreject_URL}?taskName=${taskName}`)
 
-//     return response.data
-//   } catch (error) {
-//     return error.response.data
-//   }
-// })
+    return response.data
+  } catch (error) {
+    return error.response.data
+  }
+})
+
+export const changeStatusTask = createAsyncThunk(`${sliceName}/changeStatusTask`, async (taskName) => {
+  try {
+    const response = await axios.put(`${PUTdone_URL}?taskName=${taskName}`)
+
+    return response.data
+  } catch (error) {
+    return error.response.data
+  }
+})
 
 export const counterSlice = createSlice({
   name: sliceName,
